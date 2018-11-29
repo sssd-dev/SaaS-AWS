@@ -10,3 +10,5 @@ cd $PWD/eks/terraform
 /opt/terraform plan
 
 /opt/terraform apply -auto-approve
+
+/opt/terraform destroy -auto-approve
