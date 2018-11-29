@@ -13,6 +13,7 @@ before_install:
 
 
 script:
-- docker run --name terraform -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v ".:/tmp" hashicorp/terraform 
+- docker run --name terraform -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY hashicorp/terraform 
+- docker cp ./* terraform:/tmp
 - docker ps -a
 - docker exec -d terraform "sh /tmp/build.sh"
