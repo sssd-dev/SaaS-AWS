@@ -8,6 +8,7 @@ env:
 before_install:
 - curl https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip -o /opt/terraform.zip
 - unzip /opt/terraform.zip
+- ls -l /opt
 - mv /opt/terraform /usr/bin/terraform
 
 deploy:
