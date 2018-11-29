@@ -1,5 +1,6 @@
 resource "aws_security_group" "eks-cluster" {
   name = "tf-eks-cluster"
+  vpc_id = "${data.aws_vpc.default.id}"
 
   egress {
     from_port   = 0
