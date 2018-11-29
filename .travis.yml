@@ -10,7 +10,8 @@ services:
 
 before_install:
 - docker pull hashicorp/terraform
-- docker run hashicorp/terraform -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v ".:/tmp" -t -i "/bin/bash"
+
 
 script:
-- "./tmp/build.sh"
+- docker run hashicorp/terraform -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v ".:/tmp" --name "terraform"
+- docker exec -d terraform "sh /tmp/build.sh"
