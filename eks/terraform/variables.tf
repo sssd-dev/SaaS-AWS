@@ -16,7 +16,7 @@ data "aws_vpc" "default" {
 data "aws_region" "current" {}
 
 data "aws_subnet_ids" "default" {
-  id = "${var.vpc_id}"
+  vpc_id = "${var.vpc_id}"
 }
 
 data "aws_subnet" "default" {
