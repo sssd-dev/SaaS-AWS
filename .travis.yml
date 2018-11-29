@@ -1,18 +1,18 @@
-language: ruby
+language: generic
 
 env:
   global:
   - secure: MFqLfNtBkOZEiRlw0YOkOCmiDCpPyogCloNky6/UdluEWPinZ/Pol7NX65GttvgQ4VmI3NzqhMT1pHATQYRn8QyYhAgsYiVxXionkGupMFGR4xr4RZtA0a3erBRIOcdKkjUVIqmndjYdOiJrMNWEGKsbA5O/2mvajxOFyLHtbj47Pd2ExrUPmPXJQKDuX77UQ8QernXb0by/JEHiKytjBi3gV1OsUUYuhhM3Y/HdkFXcVktOp88B91B4iyUd+oqzwj1w4Kyqj5W2R0zjkPu9pVdLtQ5KXOralDzznizBD/2L2oiCBIPYP6oCXkKNSBD8yykZMWnUhOtgYt501guXdEyRvnkn8gzpg0hMs5BZEHg9M4+9yoIwonNj+Gpt9vnNDO3CjHEgitk5vhX4shtlLP48V/RFs0Xu2o/k24LZ/Y1zdtFdZVPXEddl6NAH8sTNW8IfBcFK9CKK0oSIjcIloAFjJqKuOb07q3sR/fWOelQC+4Wz+3w32MxcsP4BcjEOqA/3BNLKFv9uA+DBEJgYIlXV2Pd3zWA46y90nXKGcGZjqDDgdQHigH4LgNtiOZpLkla6ZrhGHPRotGyrWf8xNJ3MdlhhTNB8LPHelxZyuYyw0JXQUuJ43zl5Or66ZRfrj0c1CDp4kSRTrCLM6tmF+e6SlulB8/HPCu8x5y27W0c=
   - secure: QTLrFpDwStHTRToUJcCX8hVCw7HrH8ybIt//Q1z5bzErqfU39pfYNxht6IfPGTe+zTtN2O279npklvbf/+cfFY4DiptS/e6xorLu+ooILyftzZGcQb9CIgTQUCbmmhAya/il83A8bDR67LANz/FGPzMnjSly7ATdVvJvDCzojh7hxwOiUziKW6yuv5a32dnC0xmblxJ33i5Jnoysv0SWlYuILt7SDNYEZoKMgIPnNC1IQErwqp0ubckmp0w7iRwnKESuncNSSpsQ+RniSrGQBYHisL7e1ee6CAUHYOVpsLJOisT1mIB5hRddH9mL4IzV/XblJgUvSZGdOdcEyQc/58qdwUWQa7GK0LJ2y2GDpUYbRcJpKGJJVHG9vQGox3PrBwXJNEVk+MCgb490/TZ/mNhvodIpbkD7E1v/PbRv+nW3sbb8hNdhnXF0RG+8ANT6r3pg3yipZ4yK+EtAT0A3ejn1m7sNfA6KNaXfLdv3cob1oc4u/KhyyanzLXchEsnf7DuZIF04wdnCfyPggUiceQYy4wiXuGJFydYfSVClqmlylOxpbUQuGlVcwUIMwZ5qdkuH8wyoWe0Ua2BPzfAqCiXmu+vatUlFe9XjEzTu7tt34eXkLj0KnryWLJ17W3U892UEKxYPfgSCeRWUCBGnvra/qFvtofUsYFx2HXUlCzM=
 
-services:
-- docker
-
 before_install:
-- docker pull hashicorp/terraform:light
+- curl https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip -o /opt/terraform.zip
+- unzip /opt/terraform.zip
+- chmod +x /opt/terraform
+- mv /opt/terrafom /usr/bin
 
-
-script:
-#- docker run --name terraform -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY --mount type=bind,source="$(pwd)"/,target=/tmp -d hashicorp/terraform
-- sh build.sh
-
+deploy:
+  provider: script
+  script: bash scripts/build.sh
+  on:
+    branch: develop
