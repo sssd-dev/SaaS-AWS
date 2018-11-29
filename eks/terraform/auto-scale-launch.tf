@@ -1,14 +1,3 @@
-data "aws_ami" "eks-worker" {
-  filter {
-    name   = "name"
-    values = ["eks-worker-*"]
-  }
-
-  most_recent = true
-  owners      = ["602401143452"] # Amazon Account ID
-}
-
-data "aws_region" "current" {}
 
 locals {
   eks-node-userdata = <<USERDATA
@@ -54,7 +43,7 @@ resource "aws_autoscaling_group" "eks" {
   max_size             = 2
   min_size             = 1
   name                 = "terraform-eks"
-  vpc_zone_identifier  = ["subnet-3d37ad75", "subnet-ce7fd0e2"]
+  vpc_zone_identifier  = ["${data.aws_subnet.default.*.id}"]
 
   tag {
     key                 = "Name"

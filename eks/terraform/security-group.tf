@@ -14,7 +14,7 @@ resource "aws_security_group" "eks-cluster" {
 }
 
 resource "aws_security_group_rule" "eks-cluster-workstation-ingress" {
-  cidr_blocks       = ["45.50.26.108/32"]
+  cidr_blocks       = ["${var.my_pub_ip}"]
   from_port         = 443
   protocol          = "tcp"
   security_group_id = "${aws_security_group.eks-cluster.id}"
