@@ -7,7 +7,7 @@ variable "my_pub_ip" {
   default = "156.34.161.141/32"
 }
 variable "vpc_id" {
-  default = "vpc-bacffcd3"
+  default = "vpc-d68778be"
 }
 
 data "aws_vpc" "default" {
