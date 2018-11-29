@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-cd /eks/terraform
+cd $PWD/eks/terraform
 
 /opt/terraform init
 
