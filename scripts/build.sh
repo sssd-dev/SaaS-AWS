@@ -3,10 +3,10 @@ set -e
 
 cd /eks/terraform
 
-terraform init
+/opt/terraform init
 
-terraform validate
+/opt/terraform validate
 
-terraform plan
+/opt/terraform plan
 
-terraform apply -auto-approve
+/opt/terraform apply -auto-approve
