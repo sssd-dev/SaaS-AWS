@@ -17,6 +17,8 @@ cluster_name=`terraform output clustername`
 
 aws eks update-kubeconfig --name $cluster_name
 
+sleep 2m
+
 kubectl get nodes
 
 /opt/terraform destroy -auto-approve
