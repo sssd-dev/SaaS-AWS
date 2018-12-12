@@ -11,4 +11,12 @@ cd $PWD/eks/terraform
 
 /opt/terraform apply -auto-approve
 
+aws --version
+
+cluster_name=`terraform output clustername`
+
+aws eks update-kubeconfig --name $cluster_name
+
+kubectl get nodes
+
 /opt/terraform destroy -auto-approve

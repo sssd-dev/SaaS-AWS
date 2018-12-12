@@ -55,3 +55,6 @@ output "kubeconfig" {
 output "config-map-aws-auth" {
   value = "${local.config-map-aws-auth}"
 }
+output "clustername" {
+  value = "${aws_eks_cluster.eks.name}"
+}
