@@ -12,11 +12,11 @@ before_install:
 - curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/kubectl
 - chmod +x ./kubectl
 # - sudo mkdir $HOME/bin && sudo cp ./kubectl $HOME/bin/kubectl && sudo export PATH=$HOME/bin:$PATH
-- cp ./kubectl /usr/bin/kubectl
+- sudo cp ./kubectl /usr/bin/kubectl
 - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/darwin/amd64/aws-iam-authenticator
 - chmod +x ./aws-iam-authenticator
 # - sudo cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
-- cp ./aws-iam-authenticator /usr/bin/aws-iam-authenticator
+- sudo cp ./aws-iam-authenticator /usr/bin/aws-iam-authenticator
 - echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 
 deploy:
