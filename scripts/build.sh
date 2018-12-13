@@ -3,7 +3,7 @@ set -e
 
 cd $PWD/eks/terraform
 
-/opt/terraform init --backend-config="../secrets/backend_config"
+/opt/terraform init -backend-config="../secrets/backend_config"
 
 /opt/terraform validate
 
