@@ -3,7 +3,7 @@ set -e
 
 cd $PWD/eks/terraform
 
-/opt/terraform init
+/opt/terraform init --backend-config="../secrets/backend_config"
 
 /opt/terraform validate
 
@@ -13,7 +13,7 @@ cd $PWD/eks/terraform
 
 aws --version
 
-cluster_name=`terraform output clustername`
+cluster_name="$(terraform output clustername)"
 
 aws eks update-kubeconfig --name $cluster_name
 
