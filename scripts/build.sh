@@ -13,7 +13,7 @@ cd $PWD/eks/terraform
 
 aws --version
 
-cluster_name=`terraform output clustername`
+cluster_name=echo 'terraform output clustername'
 
 aws eks update-kubeconfig --name $cluster_name
 
